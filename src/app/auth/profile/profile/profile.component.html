@@ -1,0 +1,64 @@
+<div class="profile" >
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card shadow-sm">
+            <div class="card-header bg-transparent text-center">
+              <img class="profile_img" src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.newdesignfile.com%2Fpostpic%2F2009%2F11%2Fuser-icon_291700.jpg&f=1&nofb=1&ipt=467f80ffefc6e42fa981353a040a31682d6b09a7f541916e99f8dd52adccc840&ipo=imagesdent" >
+              <h3>{{companyInfo.name}}</h3>
+            </div>
+            <div class="card-body">
+              <p class="mb-0"><strong class="pr-1">ДДС Номер: </strong>{{companyInfo.vat}}</p>
+              <p class="mb-0"><strong class="pr-1">Идент. Номер: </strong>{{companyInfo.id}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="card shadow-sm">
+            <div class="card-header bg-transparent border-0">
+              <h3 class="mb-0">Основна информация</h3>
+            </div>
+            <div class="card-body pt-0">
+              <table class="table table-bordered">
+                <tr>
+                  <th width="30%">Имейл</th>
+                  <td width="2%">:</td>
+                  <td>{{companyInfo.email}}</td>
+                </tr>
+                <tr>
+                  <th width="30%">Телефон:	</th>
+                  <td width="2%">:</td>
+                  <td>{{companyInfo.phone}}</td>
+                </tr>
+                <tr>
+                  <th width="30%">Адрес за доставка:</th>
+                  <td width="2%">:</td>
+                  <td>{{companyInfo.address}}</td>
+
+              </table>
+<h1>Последни поръчки:</h1>
+              <table class="order" *ngIf="orders.length!=0">
+            
+                <tr><th> Поръчка дата:</th>
+                  <th>Стойност:</th>
+                </tr>
+               <ng-container *ngFor="let order of this.orders; let i=index">
+                <tr><td>
+                  {{order.date}}
+                </td>
+                <td>
+                  {{order.amount}} лв.
+                </td>
+
+                </tr>
+              </ng-container>        
+              </table>
+              <div *ngIf="orders.length==0"><h2>Нямате предишни поръчки</h2></div>
+            </div>
+          </div>
+            <div style="height: 26px"></div>
+
+        </div>
+      </div>
+    </div>
+  </div>

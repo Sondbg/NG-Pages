@@ -1,0 +1,18 @@
+<img  src="../../../assets/stationaryJPG/home.jpg" [@rotatedState]='this.state'>
+<div class="container">
+    <table>
+<tr>
+    <h1 (click)="rotate()" [@loadFade]="this.visible">Добре дошли в нашият сайт. </h1>
+</tr>
+<tr>
+
+    <h2 (click)="rotate()"  [@loadFade]="this.visible"> За да достъпите цените ще ви е нужен акаунт.</h2>
+</tr>
+
+<tr>
+    <button [routerLink]="'auth/login'"  [@loadFade]="this.visible">Създаване на Акаунт</button>
+</tr>
+    </table>
+
+
+</div>

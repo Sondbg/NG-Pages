@@ -1,0 +1,14 @@
+div{
+    display:block;
+
+    height: 300px;;
+    width: 500px;
+    background-image:url('https://www.aquatec-bg.com/shop/wp-content/uploads/2022/05/404-430x215.jpg');
+    background-repeat: no-repeat;
+    margin: auto;
+}
+h1,h2{
+    margin:auto;
+    text-align: center;
+    padding-bottom: 10px;
+}

@@ -1,0 +1,59 @@
+<ng-container *ngIf="loader">
+<app-loader></app-loader>
+
+</ng-container>
+
+
+<ng-container *ngIf="!loader">
+
+  
+<div class="error" *ngIf="errorData">Error while loading the items</div>
+
+<div class="wrap">
+<!-- <div class="sidebar">
+    <h1>Филтри:</h1>
+    <ul class="nav">
+
+    <li><a (click)="filterPumps()">
+
+
+        <input type="checkbox" class="checkbox" [checked]="filterPump"><label>Помпи</label>
+
+    </a></li>
+    <li><a (click)="filterFilters()">
+
+        <input type="checkbox" class="checkbox" [checked]="filterFilter"><label>Филтри</label>
+    </a></li>
+    
+    </ul>
+    </div> -->
+
+
+<div class="gallery">
+
+<div *ngFor="let item of itemsList; let i=index" class="container">
+
+    <div class="content">
+      <img src={{item.imageUrl}}>
+      <h3>{{item.description | short : 25}}</h3>
+      
+<ng-container *ngIf="isLoggedIn">
+  <h6>{{item.price}} лв.</h6>
+</ng-container>
+<ng-container *ngIf="!isLoggedIn">
+    <h6>Влезте в профила си за цена</h6>
+
+  </ng-container>  
+  <p>sku: {{item.sku}}</p>
+      <button [routerLink]="'/catalog/detail/'+item.sku" >Разгледайте</button>
+    </div>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+</ng-container>

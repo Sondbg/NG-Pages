@@ -1,0 +1,13 @@
+.lm-col-12, .lol-page-item{
+    margin: auto;
+    text-align: center;
+    display: block;
+  color: rgba(90, 88, 85, 0.575);
+  max-width: 900px;
+  font-family: serif;
+
+}
+strong, h2{
+    font-weight: bold;
+    color:black
+}

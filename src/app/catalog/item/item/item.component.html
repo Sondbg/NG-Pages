@@ -1,0 +1,81 @@
+<ng-container *ngIf="loader">
+  <app-loader></app-loader>
+  
+  </ng-container>
+  
+
+<div class="error" *ngIf="errorData">Error while loading the items</div>
+<ng-container *ngIf="this.item">
+
+
+
+
+<ng-container>
+
+</ng-container>
+<main class="container">
+ 
+    <!-- Left Column / Headphones Image -->
+    <div class="left-column">
+      <img src={{item.imageUrl}} >
+      <!-- Product Configuration -->
+      <div class="product-configuration">
+   
+        <h1>Продава се на <strong>{{item.unit}}.</strong></h1>
+      
+           <!-- Cable Configuration -->
+       
+             <span> SKU: {{item.sku}}</span>
+            
+   
+   
+    
+         </div>
+  
+
+         <div class="product-price" *ngIf="this.user; else noUser">
+            <form #addToCartForm="ngForm" (submit)="addToCart(item,addToCartForm)">
+                <div class="qtyLine">
+                <label for="quantity"><h3>Количество:</h3></label>
+           
+            </div>
+     
+                <h1>{{item.price}} лв.</h1>
+                <ng-container *ngIf="!this.alreadyInCart">
+                <button type="submit"  class="cart-btn">Добави в количката</button>
+              </ng-container>
+
+              <ng-container *ngIf="this.alreadyInCart">
+                <p> Артикулът вече е в количката Ви!</p>
+              </ng-container>
+              </form>
+
+          </div>
+          <ng-template #noUser>
+            <h1>Нужна е регистрация за достъп до цените!</h1>
+        
+        </ng-template>
+    </div>
+   
+   
+    <!-- Right Column -->
+    <div class="right-column">
+   
+      <!-- Product Description -->
+      <div class="product-description">
+        <span>{{item.description}} </span>
+      <h1>{{item.WPItemTitle}}</h1>
+        <p>{{item.WPDescription}}</p>
+      </div>
+   
+
+   
+      <!-- Product Pricing -->
+     
+    </div>
+  </main>
+
+
+</ng-container>
+
+

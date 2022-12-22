@@ -1,0 +1,59 @@
+    
+    <!-- BEGIN branding -->
+    <header id="branding" role="banner">
+       <div class="logo">
+                        <a  id="logo" href="/" title="&quot;Акватек&quot; – цялостно решение за басейни">
+ <img src="../../../assets/stationaryJPG/LOGOAQUATECSINCE1994-2.jpg" alt="&quot;Акватек&quot; – цялостно решение за басейни" id="desktop-logo">
+     </a>
+    </div>
+     <!-- BEGIN nav-menu -->
+<nav id="nav-menu" role="navigation">
+<ul>
+                            
+                     <li>           <a class="highlight" href="/catalog">Каталог</a></li>
+   <li> <a  class="highlight" [routerLink]="'/about-us'">За нас</a></li>
+
+
+   
+<ng-container *ngIf="!isLoggedIn; else noUser">
+  <li>  <a class="highlight" id="login" [routerLink]="'auth/login'" title="Моят профил">
+
+     
+        <strong>  Влез / Регистрирай се	</strong>	
+    </a>
+</li>
+</ng-container>
+<ng-template #noUser>
+    
+  
+    
+ 
+    <a class="highlight" [routerLink]="'auth/profile'" title="Моят профил">
+
+        <span class="profile">
+        <strong>  Моят профил	</strong> </span>
+    </a>
+
+    <a class="highlight" [routerLink]="'auth/logout'" title="изход">
+
+        <span class="logout">
+          <strong>  Изход	</strong>		</span>
+    </a>
+    <a class="cart" data-bs-toggle="dropdown" id="cartMenuLink" [routerLink]="'/cart'" aria-expanded="false">
+        <img src="../../../assets/stationaryJPG/img_521148-3376030873.png">
+     
+        <span class="dd-text">Количка<span class="caret"></span></span>
+    </a>
+</ng-template>
+</ul>
+
+
+</nav>
+
+<div class="float-right">  <img src="../../../assets/stationaryJPG/green-call-icon-32x32.png">
+    <strong>+359 885 111 503</strong>
+    
+<span class="timer">{{$time | async | date : 'HH:mm:ss'}}</span>
+ </div>
+    </header>
+

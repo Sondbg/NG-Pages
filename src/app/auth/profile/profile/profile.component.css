@@ -1,0 +1,67 @@
+body {
+ 
+    padding: 0;
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    color: #000;
+}
+.profile .card .card-header .profile_img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin: 10px auto;
+    border: 10px solid #ccc;
+    border-radius: 50%;
+}
+
+.profile .card h3 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.profile .card p {
+    font-size: 16px;
+    color: #000;
+}
+
+.profile .table th,
+.profile .table td {
+
+    font-size: 17px;
+
+    color: #000;
+}
+.profile{
+text-align: center;
+background: linear-gradient(#a2d5ee, #5c8060);
+height:90vh;
+margin: auto;
+}
+
+.order{
+    margin-top: 30px;
+    font-size: 27px;
+}
+.order th{
+    padding-left: 35px;
+}
+.order td{
+    text-align: right;
+    padding-left: 15px;
+}
+p{
+    text-align:center;
+}
+table{
+    margin: auto;
+    vertical-align: middle;
+}
+th{
+    text-align: right;
+}
+td{
+    text-align: left;
+}
+tr{
+    text-align: center;
+}

@@ -1,0 +1,128 @@
+<app-loader *ngIf="this.loader"></app-loader>
+
+<div class="container" *ngIf="!this.loader">
+
+    
+    <!-- LOGIN FORM-->
+    <ng-container *ngIf="showLogin">
+    <form #loginForm="ngForm" (ngSubmit)="loginSubmit(loginForm)">
+      <div class="form-group">
+        <div class="title">
+          <i class="fas fa-pencil-alt"></i> 
+          <h2 class="w3-center">ВХОД</h2>
+        </div>
+        <div class="info">
+            <label for="email">Email<sup class="star">&#x2605;</sup></label>
+          <input #emailInput="ngModel" type="email" name="email" placeholder="login.email@gmail.com" required ngModel email>
+          <ng-container *ngIf="emailInput.touched">
+            <p class='error' *ngIf="emailInput.errors?.['required']">Email is required</p>
+            <p class='error'  *ngIf="emailInput.errors?.['email']">Email is invalid</p>
+          </ng-container>
+
+          <!-- if custom errors -->
+          <ng-container *ngIf="errors">
+            <p class='error'>{{errors}}</p>
+          </ng-container>
+
+
+          <label for="password">Парола<sup class="star">&#x2605;</sup></label>
+          <input #passwordInput="ngModel" type="password" name="password" placeholder="Password" required ngModel [minlength]="8">
+          <ng-container *ngIf="passwordInput.touched">
+            <p class='error'  *ngIf="passwordInput.errors?.['required']">Password is required</p>
+            <p class='error' *ngIf="passwordInput.errors?.['minlength']">Password must be at least 8 characters long.</p>
+          </ng-container>
+
+        </div>
+    
+        <button type="submit" href="/api/login" [disabled]="!loginForm.valid">Вход</button>
+      </div>
+      </form>
+      
+    </ng-container>
+
+    <!-- Register FORM-->
+    <ng-container *ngIf="!showLogin">
+        <form #registerForm="ngForm" (ngSubmit)="registerCompany(registerForm)">
+          <div class="form-group">
+            <div class="title">
+              <i class="fas fa-pencil-alt"></i> 
+              <h2>Регистрация</h2>
+            </div>
+            <div class="info">
+
+              <label for="company">Име на фирма<sup class="star">&#x2605;</sup></label>
+              <input  #companyInput="ngModel" class="fname" type="text" name="company" placeholder="Акватек ООД" required ngModel minlength="3" >
+              <ng-container *ngIf="companyInput.touched">
+                <p class='error' *ngIf="companyInput.errors?.['required']">Името на фирмата е задължително поле.</p>
+                <p class='error' *ngIf="companyInput.errors?.['minlength'] && !companyInput.errors?.['required']">Името трябва да е поне 3 символа.</p>
+              </ng-container>
+
+              <label for="vatReg">ДДС Номер<sup class="star">&#x2605;</sup></label>
+              <input  appVatValidator #VatInput="ngModel" class="fname" type="text" name="vatReg" placeholder="BG123456789" required ngModel  >
+              <ng-container *ngIf="VatInput.touched">
+                <p class='error' *ngIf="VatInput.errors?.['required']">ДДС Номерът е задължителен.</p>
+                <p class='error' *ngIf="VatInput.errors?.['vatNum'] && !VatInput.errors?.['required']">Невалиден ДДС номер</p>
+              </ng-container>
+    
+              <label for="email">Email<sup class="star">&#x2605;</sup></label>
+              <input #emailInput="ngModel" type="text" name="email" placeholder="Email" required  email ngModel>
+              <ng-container *ngIf="emailInput.touched">
+                <p class='error' *ngIf="emailInput.errors?.['required']">Email е задължително поле.</p>
+                <p class='error' *ngIf="emailInput.errors?.['email'] && !emailInput.errors?.['required']">Невалиден email адрес.</p>
+              </ng-container>
+
+
+              <label for="phone">Тел. Номер<sup class="star">&#x2605;</sup></label>
+              
+              <input #phoneInput="ngModel" name="phone" placeholder="88 555 5555" type="tel" required  required appPhone ngModel> 
+              <ng-container *ngIf="phoneInput.touched">
+                <p class='error' *ngIf="phoneInput.errors?.['required']">Телефонът е задължителен.</p>
+                <p class='error' *ngIf="phoneInput.errors?.['phone'] && !phoneInput.errors?.['required']">Телефонът не е валиден.</p>
+              </ng-container>
+
+              <label for="address">Адрес за доставка<sup class="star">&#x2605;</sup></label><div class='gray'>(в системата ще се въведе и адресът ви по ДДС Регистрация)</div>
+              <input #addressInput="ngModel" type="address" name="address" placeholder="България" required ngModel>
+              <ng-container *ngIf="addressInput.touched">
+                <p class='error' *ngIf="addressInput.errors?.['required']">Адресът е задължителен.</p>
+              </ng-container>
+
+
+              <label for="email">Парола<sup class="star">&#x2605;</sup></label>
+              <input #passwordInput="ngModel" type="password" name="password" placeholder="Парола" required ngModel minlength="8">
+              <ng-container *ngIf="passwordInput.touched">
+                <p class='error' *ngIf="passwordInput.errors?.['required']">Паролата е задължителна.</p>
+                <p class='error' *ngIf="passwordInput.errors?.['minlength'] && !passwordInput.errors?.['required']">Паролата трябва да е поне 8 символа.</p>
+              </ng-container>
+
+
+              <label for="email">Повторете паролата<sup class="star">&#x2605;</sup></label>
+              <input #repassInput="ngModel" type="password" name="repass" placeholder="Парола" required ngModel>
+              <ng-container *ngIf="repassInput.touched">
+                <p class='error' *ngIf="passwordInput.value!==repassInput.value &&repassInput.value!=='' ">Паролите не съвпадат!</p>
+              </ng-container>
+            </div>
+        
+            <button type="submit" href="/api/register" [disabled]="!registerForm.valid">Регистрация</button>
+          </div>
+          </form>
+
+    </ng-container>
+      <div class="register"><h2><strong>
+        <ng-container *ngIf="showLogin">   РЕГИСТРИРАЙ СЕ </ng-container>
+        <ng-container *ngIf="!showLogin">   ВХОД </ng-container>
+    </strong></h2>
+       <p> Регистрирайте се за да получите достъп до вашите поръчки и история. Моля попълнете полетата.</p>
+       <br> <a href="#" (click)="swapForms($event)">
+        <ng-container *ngIf="showLogin">   РЕГИСТРАЦИЯ </ng-container>
+        <ng-container *ngIf="!showLogin">   ВХОД </ng-container>
+    </a>
+    </div>
+      
+    </div>
+
+
+
+
+
+
+    

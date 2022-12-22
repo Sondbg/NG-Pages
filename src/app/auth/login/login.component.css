@@ -1,0 +1,122 @@
+h2{
+    text-align: center;
+}
+    .left-part, form {
+        padding: 25px;
+        }
+        .left-part {
+        text-align: center;
+        }
+        .fa-graduation-cap {
+        font-size: 72px;
+        }
+        form {
+        background: rgba(158, 200, 247, 0.322); 
+        width:35%;
+       margin: auto;
+       margin-top: 20px;
+margin-left:40px;
+margin-right:40px;
+padding:15px 40px;
+text-align: center;
+border:1px solid;
+        }
+label{
+    text-align: left;
+}
+    .register{
+        border-left: 1px solid gray ;
+        text-align: center;
+        padding:25px 40px;
+        display: block;
+    }
+    .register strong{
+        font-size: 20px;
+    }
+        .title {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        }
+        .info {
+        display: flex;
+        flex-direction: column;
+        }
+        .gray{
+            color: gray;
+        }
+        p.error{
+            color:  #D8000C;
+            border:1px solid;
+            background-color: #FFBABA;
+            background-image: url('https://i.imgur.com/GnyDvKN.png');
+            background-repeat: no-repeat;
+            padding:8px;
+        }
+        input, select {
+   display:inline-block;
+        margin-bottom: 5px;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid rgb(0, 0, 0);
+        line-height: 35px;
+        }
+        input::placeholder {
+        color: rgba(53, 52, 52, 0.557);
+        }
+        option:focus {
+        border: none;
+        }
+        option {
+        background: rgba(0, 0, 0, 0.121); 
+        border: none;
+        }
+        .btn-item, button {
+        padding: 10px 5px;
+        margin-top: 20px;
+        border-radius: 5px; 
+        border: none;
+        background: #26a9e0; 
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 400;
+        color: #fff;
+        border-radius:28px;
+        width:25%;
+        }
+ 
+        .btn-item {
+        display: inline-block;
+        margin: 20px 5px 0;
+        }
+        button {
+        width: 50%;
+        }
+        button:hover, .btn-item:hover {
+        background: #b6400541;
+        }
+
+
+        .star{
+            color:red;
+            }
+            .container{
+                justify-content: center;
+                display:flex;
+                flex-wrap:wrap;
+                max-width: 100%;
+                margin: auto;
+                margin-top: 45px;
+                margin-bottom: 45px;
+                text-align: center;
+            }
+
+    a{
+        text-decoration: none;
+        text-align: center;
+        line-height: 18px;
+        padding: 20px 12px;
+        margin-top: 25px;
+        color:#000000;
+        background-color: #b6b6b65d;
+    }

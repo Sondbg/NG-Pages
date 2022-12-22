@@ -1,0 +1,74 @@
+<app-loader *ngIf="this.loader"></app-loader>
+<div class="shopping-cart" *ngIf="!this.loader">
+<h1><p>КОЛИЧКА</p></h1>
+
+<div *ngIf="this.products.length==0"><h1>Количката ви е празна!</h1> </div>
+
+<div clas="container" *ngIf="this.products.length!=0">
+<table class="items">
+    <tr>
+    <td>Снимка</td>
+    <td>Артикул</td>
+    <td>Описание</td>
+    <td>Количество</td>
+    <td>Ед. цена</td>
+    <td>Обща цена</td>
+    <td>Премахни</td>
+</tr>
+
+<ng-container *ngFor="let item of this.products;let i=index">
+<tr>
+<td class="image">
+    <img src={{item.imageUrl}}>
+</td>
+<td class="sku">
+    {{item.sku}}
+</td>
+<td class="description">
+    {{item.description}}
+ </td>
+ <td class="qty">
+<input  ngModel #inputQty="ngModel" type="number" min="1" max="99"  (change)="changeQty($event,item)">
+
+ </td>
+ <td class="unitPrice">
+    {{item.price}}
+     </td>
+     <td class="price">
+   
+       {{item.price*inputQty.value}}
+         </td>
+ <td>
+    <button (click)="removeItem(item)" class="remove">X</button>
+ </td>
+
+
+</tr>
+ 
+</ng-container>
+</table>
+
+<table class="subtotal">
+<tr>
+    <td>Стойност без ДДС</td> 
+    <td>{{this.subtotal | number:'1.1' }} лв.</td>
+</tr>
+<tr>
+    <td> ДДС:</td> 
+    <td>{{this.VAT | number:'1.1'}} лв.</td>
+</tr>
+<tr>
+    <td>Total</td> 
+    <td>{{this.total | number:'1.1'}} лв.</td>
+</tr>
+<tr>
+    <td colspan="2">  <button (click)="submitMyOrder()" class="checkout">Завърши поръчка</button>
+    </td>
+    </tr>
+</table>
+       
+
+    </div>
+
+
+</div>
